@@ -1,5 +1,9 @@
+import Padlock from "../components/Sign";
+
 export default function Signup() { 
     return(
-        <><p>OIIIIIIII</p></>
+        <>
+        <Padlock />
+        </>
     )
 }
