@@ -1,5 +1,12 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Signup from "./pages/Signup";
+
 export default function App() {
   return (
-    <><p>OIIIIIIIIII</p></>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Signup />}/>
+      </Routes>
+    </BrowserRouter>
   );
 }
