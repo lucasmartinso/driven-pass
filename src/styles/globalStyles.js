@@ -7,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
   }
   body{
     background-color: #FFFFFF;
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Recursive', sans-serif;
   }
 `;
 
