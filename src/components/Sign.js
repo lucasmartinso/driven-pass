@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import styled from "styled-components";
 import padlock from "../styles/images/Padlocks.svg";
 
@@ -39,7 +40,7 @@ export default function Padlock() {
                     <Input> 
                         <button onClick={() => setClicked(!clicked)}>
                             { clicked ? (
-                                "Oi"
+                              <ThreeDots color="white" height={80} width={100} />
                             ) : ("Criar")}
                         </button>
                     </Input>
@@ -88,19 +89,23 @@ const Inputs = styled.div`
 `
 const Input = styled.div`
     width: 300px; 
-    height: 40px;
+    height: 45px;
     border-radius: 5px;
     margin-bottom: 30px;
 
     input { 
         width: 100%; 
         height: 100%; 
-        border: none;
         padding: 0px 10px;
         font-size: 18px;
-        border: 3px solid rgba(0, 89, 133, 1);
+        border: 2px solid rgba(0, 89, 133, 1);
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
         border-radius: 5px;
+        transition: all 0.2s linear;
+
+        &:focus { 
+            border: 6px solid rgba(0, 89, 133, 1);
+        }
     }
 
     button { 
@@ -111,11 +116,16 @@ const Input = styled.div`
         font-weight: bold;
         border: none;
         box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
-        transition: 0.2s all;
+        transition: 1s all;
         border-radius: 5px;
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
 
-        &:hover { 
+        &:hover,
+        &:focus { 
             cursor: pointer;
+            background-color: #70CE36;
         }
 
         &:active {  

@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
   }
   body{
-    background-color: #FFFFFF;
+    background-color: #F6F6F6;
     font-family: 'Recursive', sans-serif;
   }
 `;
