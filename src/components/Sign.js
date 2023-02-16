@@ -1,20 +1,34 @@
 import { useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
 import styled from "styled-components";
+import { signup } from "../services/usersService";
 import padlock from "../styles/images/Padlocks.svg";
 
-export default function Padlock() { 
+export default function Padlock({state}) { 
     const [ email, setEmail ] = useState();
     const [ password, setPassword ] = useState(); 
     const [ clicked, setClicked ] = useState(false); 
-    const [ error, setError ] = useState(true);
-    const [ errorMessage, setErrorMessage ] = useState("Bom dia");
+    const [ error, setError ] = useState(false);
+    const [ errorMessage, setErrorMessage ] = useState();
 
-    async function userData() { 
+    async function signFunctions(event) { 
+        event.preventDefault();
+
         try {
-            
+            const userData = { 
+                email, 
+                password
+            }
+
+            // if(state === "signup")
+            await signup(userData);
+            // else if(state === "login") console.log("oi");
+
         } catch (error) {
             console.log(error);
+            setErrorMessage(error.response.data);
+            setError(true);
+            setClicked(false);
         }
     }
 
@@ -25,7 +39,7 @@ export default function Padlock() {
                 <p>DrivenPass</p>
             </PadlockImage>
 
-            <form onSubmit={userData}>
+            <form onSubmit={signFunctions}>
                 <Inputs>
                     <Input> 
                         <input
@@ -167,7 +181,7 @@ const Enter = styled.div`
         font-weight: bold;
         border: none;
         box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
-        transition: 1s all;
+        transition: 0.3s all;
         border-radius: 5px;
         display: flex; 
         justify-content: center; 
@@ -200,7 +214,7 @@ const Error = styled.div`
     padding: 0px 20px 0px 20px;
     background-color: #FF7474;
     color: rgba(255,255,255,1);
-    font-size: 20px;
+    font-size: 17px;
     font-weight: bold;
     border: 2px solid rgba(120, 177, 89, 0.25);
     box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
