@@ -176,7 +176,7 @@ const Enter = styled.div`
         &:hover,
         &:focus { 
             cursor: pointer;
-            background-color: #70CE36;
+            background-color: #ADFF2F;
         }
 
         &:active {  
