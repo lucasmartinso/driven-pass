@@ -99,6 +99,8 @@ const Input = styled.div`
         padding: 0px 10px;
         font-size: 18px;
         border: 3px solid rgba(0, 89, 133, 1);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
     }
 
     button { 
@@ -110,14 +112,15 @@ const Input = styled.div`
         border: none;
         box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
         transition: 0.2s all;
+        border-radius: 5px;
 
         &:hover { 
-        cursor: pointer;
+            cursor: pointer;
         }
 
         &:active {  
-        transform: scale(0.98);
-        box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+            transform: scale(0.98);
+            box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
         }
     }
 `
