@@ -7,6 +7,8 @@ export default function Padlock() {
     const [ email, setEmail ] = useState();
     const [ password, setPassword ] = useState(); 
     const [ clicked, setClicked ] = useState(false); 
+    const [ error, setError ] = useState(true);
+    const [ errorMessage, setErrorMessage ] = useState("Bom dia");
 
     return(
         <Container>
@@ -26,7 +28,7 @@ export default function Padlock() {
                             required
                         />
                     </Input>
-
+                    
                     <Input> 
                         <input
                             type="password"
@@ -44,6 +46,15 @@ export default function Padlock() {
                             ) : ("Criar")}
                         </button>
                     </Input>
+
+                    {error ? (
+                    <Error>
+                        <button>
+                            <span>{errorMessage}</span>
+                            <span id="x" onClick={() => setError(false)}>X</span>
+                        </button>
+                    </Error>
+                    ) : ""}
                 </Inputs>
             </form>
         </Container>
@@ -133,4 +144,38 @@ const Input = styled.div`
             box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
         }
     }
+`
+const Error = styled.div` 
+  width: 100%; 
+  height: 50px; 
+  display: flex; 
+  justify-content: center; 
+
+  button { 
+    width: 300px; 
+    height: 100%; 
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0px 20px 0px 20px;
+    background-color: #FF7474;
+    color: rgba(255,255,255,1);
+    font-size: 20px;
+    font-weight: bold;
+    border: 2px solid rgba(120, 177, 89, 0.25);
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;
+    transition: 0.2s all;
+
+   span#x { 
+    &:hover { 
+      cursor: pointer;
+    }
+
+    &:active {  
+      transform: scale(0.98);
+      box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+    }
+   }
+  }
 `
