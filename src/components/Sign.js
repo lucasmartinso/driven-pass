@@ -10,6 +10,14 @@ export default function Padlock() {
     const [ error, setError ] = useState(true);
     const [ errorMessage, setErrorMessage ] = useState("Bom dia");
 
+    async function userData() { 
+        try {
+            
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return(
         <Container>
             <PadlockImage>
@@ -17,7 +25,7 @@ export default function Padlock() {
                 <p>DrivenPass</p>
             </PadlockImage>
 
-            <form>
+            <form onSubmit={userData}>
                 <Inputs>
                     <Input> 
                         <input
@@ -39,13 +47,13 @@ export default function Padlock() {
                         />
                     </Input>
 
-                    <Input> 
+                    <Enter> 
                         <button onClick={() => setClicked(!clicked)}>
                             { clicked ? (
                               <ThreeDots color="white" height={80} width={100} />
                             ) : ("Criar")}
                         </button>
-                    </Input>
+                    </Enter>
 
                     {error ? (
                     <Error>
@@ -118,6 +126,38 @@ const Input = styled.div`
             border: 6px solid rgba(0, 89, 133, 1);
         }
     }
+
+    button { 
+        width: 100%; 
+        height: 100%; 
+        background-color: rgba(155, 251, 176, 1);
+        font-size: 18px;
+        font-weight: bold;
+        border: none;
+        box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
+        transition: 1s all;
+        border-radius: 5px;
+        display: flex; 
+        justify-content: center; 
+        align-items: center;
+
+        &:hover,
+        &:focus { 
+            cursor: pointer;
+            background-color: #70CE36;
+        }
+
+        &:active {  
+            transform: scale(0.98);
+            box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
+        }
+    }
+`
+const Enter = styled.div`
+    width: 300px; 
+    height: 45px;
+    border-radius: 5px;
+    margin-bottom: 30px;
 
     button { 
         width: 100%; 
