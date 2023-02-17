@@ -13,9 +13,8 @@ export default function Signup() {
             setEmail={setEmail}
             password={password}
             setPassword={setPassword}
-            state="signup"
+            state="login"
         />
         </>
     )
 }
-

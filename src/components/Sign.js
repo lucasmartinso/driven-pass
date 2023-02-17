@@ -71,8 +71,10 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
                             ) : ("Create")}
                         </button>
                     </Buttons>
-
-                    <Signup />
+                    
+                    {state==="signup" ? (
+                        <Signup />
+                    ) : ("")}
 
                     {error ? (
                     <Error>
