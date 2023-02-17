@@ -21,6 +21,7 @@ export default function Padlock({state}) {
             }
 
             // if(state === "signup")
+            setClicked(true);
             await signup(userData);
             // else if(state === "login") console.log("oi");
 
@@ -62,7 +63,7 @@ export default function Padlock({state}) {
                     </Input>
 
                     <Enter> 
-                        <button onClick={() => setClicked(!clicked)}>
+                        <button>
                             { clicked ? (
                               <ThreeDots color="white" height={80} width={100} />
                             ) : ("Criar")}
