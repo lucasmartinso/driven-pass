@@ -6,10 +6,10 @@ import padlock from "../styles/images/Padlocks.svg";
 import Signup from "./Signup";
 
 export default function Padlock({ email, setEmail, password, setPassword, state }) { 
-    
     const [ clicked, setClicked ] = useState(false); 
     const [ error, setError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState();
+    const [ disabled, setDisabled ] = useState(false);
 
     async function signFunctions(event) { 
         event.preventDefault();
@@ -21,6 +21,7 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
             }
             
             setClicked(true);
+            setDisabled(true);
             if(state === "signup") await signup(userData);
             else if(state === "login") console.log("oi");
 
@@ -41,22 +42,24 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
 
             <form onSubmit={signFunctions}>
                 <Inputs>
-                    <Input> 
+                    <Input disabled={disabled}> 
                         <input
                             type="email"
                             placeholder="Email"
                             value={email}
                             onChange={(event) => setEmail(event.target.value)}
+                            disabled={disabled}
                             required
                         />
                     </Input>
                     
-                    <Input> 
+                    <Input disabled={disabled}> 
                         <input
                             type="password"
                             placeholder="Password"
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
+                            disabled={disabled}
                             required
                         />
                     </Input>
@@ -65,7 +68,7 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
                         <button>
                             { clicked ? (
                               <ThreeDots color="white" height={80} width={100} />
-                            ) : ("Criar")}
+                            ) : ("Create")}
                         </button>
                     </Buttons>
 
@@ -140,6 +143,10 @@ const Input = styled.div`
 
         &:focus { 
             border: 6px solid rgba(0, 89, 133, 1);
+        }
+
+        &:hover { 
+            cursor: ${props => props.disabled ? ("not-allowed") : ("text")}
         }
     }
 
