@@ -4,9 +4,8 @@ import styled from "styled-components";
 import { signup } from "../services/usersService";
 import padlock from "../styles/images/Padlocks.svg";
 
-export default function Padlock({state}) { 
-    const [ email, setEmail ] = useState();
-    const [ password, setPassword ] = useState(); 
+export default function Padlock({ email, setEmail, password, setPassword, state }) { 
+    
     const [ clicked, setClicked ] = useState(false); 
     const [ error, setError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState();
@@ -19,11 +18,10 @@ export default function Padlock({state}) {
                 email, 
                 password
             }
-
-            // if(state === "signup")
+            
             setClicked(true);
-            await signup(userData);
-            // else if(state === "login") console.log("oi");
+            if(state === "signup") await signup(userData);
+            else if(state === "login") console.log("oi");
 
         } catch (error) {
             console.log(error);
