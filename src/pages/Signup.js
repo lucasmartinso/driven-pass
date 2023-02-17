@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styled from "styled-components";
 import Padlock from "../components/Sign";
 
 export default function Signup() { 
@@ -15,6 +16,8 @@ export default function Signup() {
             setPassword={setPassword}
             state="signup"
         />
+        
         </>
     )
 }
+

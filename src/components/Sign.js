@@ -3,6 +3,7 @@ import { ThreeDots } from "react-loader-spinner";
 import styled from "styled-components";
 import { signup } from "../services/usersService";
 import padlock from "../styles/images/Padlocks.svg";
+import Signup from "./Signup";
 
 export default function Padlock({ email, setEmail, password, setPassword, state }) { 
     
@@ -60,13 +61,15 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
                         />
                     </Input>
 
-                    <Enter> 
+                    <Buttons color="rgba(155, 251, 176, 1)" trasitionColor="rgba(50, 205, 50, 1)"> 
                         <button>
                             { clicked ? (
                               <ThreeDots color="white" height={80} width={100} />
                             ) : ("Criar")}
                         </button>
-                    </Enter>
+                    </Buttons>
+
+                    <Signup />
 
                     {error ? (
                     <Error>
@@ -166,21 +169,21 @@ const Input = styled.div`
         }
     }
 `
-const Enter = styled.div`
+export const Buttons = styled.div`
     width: 300px; 
     height: 45px;
     border-radius: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 
     button { 
         width: 100%; 
         height: 100%; 
-        background-color: rgba(155, 251, 176, 1);
+        background-color: ${props => props.color ? (props.color) : ("white")};
         font-size: 18px;
         font-weight: bold;
         border: none;
         box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
-        transition: 0.3s all;
+        transition: 0.5s all;
         border-radius: 5px;
         display: flex; 
         justify-content: center; 
@@ -189,7 +192,7 @@ const Enter = styled.div`
         &:hover,
         &:focus { 
             cursor: pointer;
-            background-color: #ADFF2F;
+            background-color: ${props => props.trasitionColor ? (props.trasitionColor) : ("white")};
         }
 
         &:active {  
