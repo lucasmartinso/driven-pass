@@ -27,7 +27,9 @@ export default function Main() {
     ]
     return(
         <>
-        <Title />
+        <Title 
+            word= "My passwords"
+        />
         <Types> 
             <ul>
                 {typeSecrets.map(secret => (

@@ -2,9 +2,8 @@ import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import padlock from "../styles/images/Padlocks.svg";
 
-export default function Title() { 
+export default function Title({ word }) { 
     const navigate = useNavigate();
-    const message = "boa tarde"
 
     return( 
         <>
@@ -17,7 +16,7 @@ export default function Title() {
         </ContainerTitle>
 
         <BlueRange>
-            <span>{message}</span>
+            <span>{word}</span>
         </BlueRange>
         </>
     )
