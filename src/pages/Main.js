@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 import Title from "../components/Title";
@@ -27,6 +28,10 @@ export default function Main() {
         },
     ]
     
+    useEffect(() => {
+        
+    },[]);
+    
     return(
         <>
         <Title 
@@ -50,6 +55,7 @@ export default function Main() {
             color="rgba(0, 89, 133, 1)"
             transitionColor="#00FFFF"
             iconType="add"
+            goTo="/new"
         />
         </>
     )

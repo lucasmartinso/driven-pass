@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Footer({ message, color, transitionColor, iconType }) { 
+export default function Footer({ message, color, transitionColor, iconType, goTo }) { 
     const navigate = useNavigate(); 
 
     return(
@@ -11,7 +11,7 @@ export default function Footer({ message, color, transitionColor, iconType }) {
                     <ion-icon name="chevron-back-outline"></ion-icon>
                     <span>Back</span>
                 </Message>
-                <CircleAction color={color} transitionColor={transitionColor} onClick={() => navigate("/login")}>
+                <CircleAction color={color} transitionColor={transitionColor} onClick={() => navigate(goTo)}>
                     <ion-icon name={iconType}></ion-icon>
                 </CircleAction>
             </FooterContainer>
