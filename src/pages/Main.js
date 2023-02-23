@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Footer from "../components/Footer";
 import Title from "../components/Title";
 import SecretsType from "../renderpages/SecretsType";
 
@@ -25,11 +26,13 @@ export default function Main() {
             icon: "wifi"
         },
     ]
+    
     return(
         <>
         <Title 
             word= "My passwords"
         />
+
         <Types> 
             <ul>
                 {typeSecrets.map(secret => (
@@ -41,13 +44,15 @@ export default function Main() {
                 ))}
             </ul>
         </Types>
+
+        <Footer />
         </>
     )
 }
 
 const Types = styled.div`
     width: 100%; 
-    height: 100%; 
+    height: 80%; 
     margin-top: 30px;
     display: flex;
     justify-content: center;

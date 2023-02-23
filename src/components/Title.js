@@ -25,9 +25,6 @@ export default function Title({ word }) {
 const ContainerTitle = styled.div`
     width: 100%; 
     height: 120px; 
-    position: fixed; 
-    left: 0; 
-    top: 0;
     display: flex;
     justify-content: space-between;
     align-items: center; 
@@ -65,7 +62,7 @@ const SubTitle = styled.div`
 const BlueRange = styled.div`
     width: 100%; 
     height: 40px;
-    margin-top: 110px;
+    margin-top: 10px;
     background-color: rgba(0, 89, 133, 1);
     display: flex; 
     align-items: center; 
