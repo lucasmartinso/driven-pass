@@ -69,7 +69,7 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
                         <button>
                             { clicked ? (
                               <ThreeDots color="white" height={80} width={100} />
-                            ) : ("Create")}
+                            ) : ( state=== "signup" ? ("Create") : ("Acess")) }
                         </button>
                     </Buttons>
                     
