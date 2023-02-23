@@ -45,7 +45,12 @@ export default function Main() {
             </ul>
         </Types>
 
-        <Footer />
+        <Footer 
+            message={false}
+            color="rgba(0, 89, 133, 1)"
+            transitionColor="#00FFFF"
+            iconType="add"
+        />
         </>
     )
 }

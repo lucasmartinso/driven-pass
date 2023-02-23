@@ -1,18 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Footer() { 
+export default function Footer({ message, color, transitionColor, iconType }) { 
     const navigate = useNavigate(); 
 
     return(
         <Container>
             <FooterContainer>
-                <Message> 
+                <Message message={message}> 
                     <ion-icon name="chevron-back-outline"></ion-icon>
                     <span>Back</span>
                 </Message>
-                <CircleAction color="red" transitionColor="blue" onClick={() => navigate("/login")}>
-                    <ion-icon name="add"></ion-icon>
+                <CircleAction color={color} transitionColor={transitionColor} onClick={() => navigate("/login")}>
+                    <ion-icon name={iconType}></ion-icon>
                 </CircleAction>
             </FooterContainer>
         </Container>
@@ -37,6 +37,7 @@ const FooterContainer = styled.div`
 `
 const Message = styled.div`
     display: flex; 
+    visibility: hidden;
 
     span { 
         font-family: Recursive;
@@ -55,7 +56,7 @@ const CircleAction = styled.div`
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background-color: ${props => props.color ? (props.color) : ("white")};
+    background-color: ${props => props.color};
     display: flex; 
     align-items: center;
     justify-content: center; 
@@ -71,7 +72,7 @@ const CircleAction = styled.div`
     &:hover, 
     &:focus { 
         cursor: pointer; 
-        background-color: ${props => props.transitionColor ? (props.transitionColor) : ("white")};
+        background-color: ${props => props.transitionColor};
     }
 
     &:active {  
@@ -79,4 +80,3 @@ const CircleAction = styled.div`
         box-shadow: 3px 2px 22px 1px rgba(0, 0, 0, 0.24);
     }
 `
-//<ion-icon name="close"></ion-icon>
