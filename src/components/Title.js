@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import padlock from "../styles/images/Padlocks.svg";
 
 export default function Title() { 
+    const navigate = useNavigate();
     const message = "boa tarde"
 
     return( 
@@ -11,7 +13,7 @@ export default function Title() {
                 <img src={padlock} alt={padlock} />
                 <span>DrivenPass</span>
             </SubTitle>
-            <ion-icon name="exit"></ion-icon>
+            <ion-icon name="exit" onClick={() => navigate("/login")}></ion-icon>
         </ContainerTitle>
 
         <BlueRange>
