@@ -30,7 +30,8 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
                 navigate("/login");
             }
             else if(state === "login") { 
-                await login(userData);
+                const { data } = await login(userData);
+                console.log(data.token);
                 navigate("/");
             }
 

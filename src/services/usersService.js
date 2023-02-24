@@ -6,6 +6,6 @@ export async function signup(userData) {
 
 export async function login(userData) { 
     const promise = await api.post(`/users/sign-in`,userData);
-    console.log(promise);
+    
     return promise;
 }
