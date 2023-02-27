@@ -70,6 +70,7 @@ export default function Main() {
                         name= {secret.name}
                         icon= {secret.icon}
                         length = {secret.length}
+                        screen="acess"
                     />
                 ))}
             </ul>
@@ -86,7 +87,7 @@ export default function Main() {
     )
 }
 
-const Types = styled.div`
+export const Types = styled.div`
     width: 100%; 
     height: 80%; 
     margin-top: 30px;

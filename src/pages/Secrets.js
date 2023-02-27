@@ -8,6 +8,7 @@ import { getCards } from "../services/cardsService";
 import { getWifi } from "../services/wifiService";
 import AuthConfig from "../hooks/auth";
 import styled from "styled-components";
+import Footer from "../components/Footer";
 
 export default function Secrets() { 
     const { name } = useParams();
@@ -46,8 +47,19 @@ export default function Secrets() {
 
         {secrets.length !==0 ? 
             ("OIII") : (
-                <Message>No {name} registered yet</Message>
+                <Message>
+                    <p><ion-icon name="alert-circle-sharp"></ion-icon> NO {name.toUpperCase()} REGISTRED YET</p>
+                    <span>Click on the right bottom button to create a new {name}</span>
+                </Message>
             )}
+
+        <Footer 
+            message={false}
+            color="rgba(0, 89, 133, 1)"
+            transitionColor="#00FFFF"
+            iconType="add"
+            goTo="/new"
+        />  
         </>
     )
 }
@@ -58,8 +70,25 @@ const Message = styled.div`
     display: flex; 
     justify-content: center; 
     align-items: center;
-    margin-top: 350px;
-    font-size: 30px;
-    color: rgba(0, 89, 133, 1);
-    font-weight: bold;
+    flex-direction: column;
+    margin-top: 320px;
+    
+    p { 
+        font-size: 30px;
+        color: rgba(0, 89, 133, 1);
+        font-weight: bold;
+        display: flex; 
+        align-items: center;
+
+        ion-icon { 
+            width: 50px; 
+            height: 50px;
+            color: red;
+            margin-right: 10px;
+        }
+    }
+
+    span { 
+        margin-top: 10px;
+    }
 `
