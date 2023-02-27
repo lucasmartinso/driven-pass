@@ -4,6 +4,11 @@ import styled from "styled-components";
 export default function Footer({ message, color, transitionColor, iconType, goTo }) { 
     const navigate = useNavigate(); 
 
+    function changePage() { 
+        navigate(goTo);
+        window.location.reload();
+    }
+
     return(
         <Container>
             <FooterContainer>
@@ -11,7 +16,7 @@ export default function Footer({ message, color, transitionColor, iconType, goTo
                     <ion-icon name="chevron-back-outline"></ion-icon>
                     <span>Back</span>
                 </Message>
-                <CircleAction color={color} transitionColor={transitionColor} onClick={() => navigate(goTo)}>
+                <CircleAction color={color} transitionColor={transitionColor} onClick={changePage}>
                     <ion-icon name={iconType}></ion-icon>
                 </CircleAction>
             </FooterContainer>
