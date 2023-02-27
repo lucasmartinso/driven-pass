@@ -9,18 +9,16 @@ import { getCredentials } from "../services/credentialsService";
 import { getNotes } from "../services/safenotesService";
 import { getCards } from "../services/cardsService";
 import { getWifi } from "../services/wifiService";
+import AuthConfig from "../hooks/auth";
 
 export default function Main() { 
-    
     const [ credentials, setCredentials ] = useState([]); 
     const [ notes, setNotes ] = useState([]);
     const [ cards, setCards ] = useState([]);
     const [ wifi, setWifi ] = useState([]);
     
     useEffect(async () => {
-        const config = {
-            headers: { Authorization: `Bearer ${token}` },
-        };
+        const config = AuthConfig();
         const { credentials } = await getCredentials(config);
         setCredentials(credentials);
         const { notes } = await getNotes(config);
