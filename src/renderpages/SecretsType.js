@@ -5,8 +5,13 @@ export default function SecretsType({ id, name, icon, length, screen }) {
     const navigate = useNavigate(); 
 
     function changeScreen() { 
-        navigate(`/secret/${name}`);
-        window.location.reload();
+        if(screen==="acess") { 
+            navigate(`/secret/${name}`);
+            window.location.reload();
+        } else if(screen==="create") { 
+            navigate(`/new/create/${name}`);
+            window.location.reload();
+        }
     }
 
     return(

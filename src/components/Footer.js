@@ -7,7 +7,7 @@ export default function Footer({ message, color, transitionColor, iconType, goTo
     return(
         <Container>
             <FooterContainer>
-                <Message message={message}> 
+                <Message message={message} onClick={() => navigate("/")}> 
                     <ion-icon name="chevron-back-outline"></ion-icon>
                     <span>Back</span>
                 </Message>
@@ -37,7 +37,7 @@ const FooterContainer = styled.div`
 `
 const Message = styled.div`
     display: flex; 
-    visibility: hidden;
+    visibility: ${props => props.message ? ("visible") : ("hidden")};
 
     span { 
         font-family: Recursive;

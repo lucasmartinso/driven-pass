@@ -48,7 +48,7 @@ export default function Categories() {
         </Types>
 
         <Footer 
-            message={false}
+            message={true}
             color="rgba(0, 89, 133, 1)"
             transitionColor="#00FFFF"
             iconType="add"
