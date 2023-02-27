@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function SecretsType({ id, name, icon, length }) { 
+export default function SecretsType({ id, name, icon, length, screen }) { 
     const navigate = useNavigate(); 
 
     function changeScreen() { 
@@ -16,7 +16,9 @@ export default function SecretsType({ id, name, icon, length }) {
                 <ion-icon name={icon}></ion-icon>
                 <span>{name}</span>
             </TypeInfo>
-            <CounterBall>{length.length}</CounterBall>
+            {screen==="acess" ? (
+                <CounterBall>{length.length}</CounterBall>
+            ) : ("")}
         </Type>
         </>
     )
