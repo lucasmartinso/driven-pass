@@ -31,8 +31,10 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
             }
             else if(state === "login") { 
                 const { data } = await login(userData);
-                console.log(data.token);
+                console.log(data);
+                localStorage.setItem("USER_TOKEN",data.token);
                 navigate("/");
+                window.location.reload();
             }
 
         } catch (error) {

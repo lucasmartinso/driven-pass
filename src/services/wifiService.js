@@ -1,5 +1,7 @@
 import api from "./api";
 
 export async function getWifi(config) { 
-    await api.get(`/wifi`,config);
+    const promise = await api.get(`/wifi`,config);
+
+    return promise.data;
 }

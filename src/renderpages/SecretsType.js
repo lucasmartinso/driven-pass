@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export default function SecretsType({ id, name, icon }) { 
+export default function SecretsType({ id, name, icon, length }) { 
     return(
         <>
         <Type id={id}>
@@ -8,7 +8,7 @@ export default function SecretsType({ id, name, icon }) {
                 <ion-icon name={icon}></ion-icon>
                 <span>{name}</span>
             </TypeInfo>
-            <CounterBall>4</CounterBall>
+            <CounterBall>{length.length}</CounterBall>
         </Type>
         </>
     )

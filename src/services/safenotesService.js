@@ -1,5 +1,7 @@
 import api from "./api";
 
 export async function getNotes(config) { 
-    await api.get(`/notes`,config);
+    const promise = await api.get(`/notes`,config);
+
+    return promise.data;
 }
