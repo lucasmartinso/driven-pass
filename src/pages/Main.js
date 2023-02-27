@@ -5,14 +5,13 @@ import styled from "styled-components";
 import Footer from "../components/Footer";
 import Title from "../components/Title";
 import SecretsType from "../renderpages/SecretsType";
-import TokenContext from "../contexts/tokenContext";
 import { getCredentials } from "../services/credentialsService";
 import { getNotes } from "../services/safenotesService";
 import { getCards } from "../services/cardsService";
 import { getWifi } from "../services/wifiService";
 
 export default function Main() { 
-    const { token } = useContext(TokenContext);
+    
     const [ credentials, setCredentials ] = useState([]); 
     const [ notes, setNotes ] = useState([]);
     const [ cards, setCards ] = useState([]);
@@ -58,8 +57,6 @@ export default function Main() {
             length: wifi
         },
     ]
-
-    console.log(typeSecrets);
     
     return(
         <>
