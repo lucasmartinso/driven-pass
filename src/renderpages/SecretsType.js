@@ -1,9 +1,17 @@
+import { useNavigate } from "react-router-dom"
 import styled from "styled-components"
 
 export default function SecretsType({ id, name, icon, length }) { 
+    const navigate = useNavigate(); 
+
+    function changeScreen() { 
+        navigate(`/secret/${name}`);
+        window.location.reload();
+    }
+
     return(
         <>
-        <Type id={id}>
+        <Type id={id} onClick={changeScreen}>
             <TypeInfo>
                 <ion-icon name={icon}></ion-icon>
                 <span>{name}</span>

@@ -5,6 +5,7 @@ import Main from "./pages/Main";
 import Signup from "./pages/Signup";
 import GlobalStyle from "./styles/globalStyles";
 import TokenContext from "./contexts/tokenContext";
+import Secrets from "./pages/Secrets";
 
 export default function App() {
   const [ token, setToken ] = useState(localStorage.getItem("USER_TOKEN"));
@@ -17,6 +18,7 @@ export default function App() {
           <Route path="/sign-up" element={<Signup />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/" element={<Main />}/>
+          <Route path="/secret/:name" element={<Secrets />}/>
         </Routes>
       </BrowserRouter>
     </TokenContext.Provider>
