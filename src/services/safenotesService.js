@@ -5,3 +5,7 @@ export async function getNotes(config) {
 
     return promise.data;
 }
+
+export async function createNotes(data,config) { 
+    await api.post(`/notes`, data,config);
+}
