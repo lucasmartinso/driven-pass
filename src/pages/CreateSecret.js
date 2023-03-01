@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom"
 import styled from "styled-components";
 import Footer from "../components/Footer";
+import MessageAlert from "../components/MessageAlert";
 import { Input } from "../components/Sign";
 import Title from "../components/Title";
 
@@ -18,6 +19,14 @@ export default function CreateSecret() {
     const [ type, setType ] = useState();
     const [ wifiName, setWifiName ] = useState();
 
+    function registreInfo() { 
+        try {
+            setDisabled(true);
+        } catch (error) {
+            
+        }
+    }
+
     return( 
         <>
         <Title 
@@ -28,7 +37,7 @@ export default function CreateSecret() {
             <span>Register</span>
         </SubTitle>
 
-        <form>
+        <form onSubmit={registreInfo}>
             <Inputs>
                 <Input> 
                     <input
@@ -153,6 +162,8 @@ export default function CreateSecret() {
                 goBack="/new"
             />
         </form>
+
+        <MessageAlert />
         </>
     )
 }

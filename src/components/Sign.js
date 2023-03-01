@@ -149,11 +149,12 @@ export const Input = styled.div`
     width: 300px; 
     height: 45px;
     border-radius: 5px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
 
-    input { 
+    input,
+    textarea { 
         width: 100%; 
-        height: 100%; 
+        height: 50px; 
         padding: 0px 10px;
         font-size: 18px;
         border: 2px solid rgba(0, 89, 133, 1);
@@ -168,6 +169,11 @@ export const Input = styled.div`
         &:hover { 
             cursor: ${props => props.disabled ? ("not-allowed") : ("text")}
         }
+    }
+
+    textarea { 
+        height: 70px;
+        padding: 5px 10px;
     }
 
     button { 
