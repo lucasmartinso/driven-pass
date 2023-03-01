@@ -138,14 +138,14 @@ const PadlockImage = styled.div`
         font-weight: bold;
     }
 `
-const Inputs = styled.div`
+export const Inputs = styled.div`
     width: 100%; 
     height: 100%;
     display: flex; 
     flex-direction: column; 
     justify-content: space-between;
 `
-const Input = styled.div`
+export const Input = styled.div`
     width: 300px; 
     height: 45px;
     border-radius: 5px;

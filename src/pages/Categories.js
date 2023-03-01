@@ -53,6 +53,7 @@ export default function Categories() {
             transitionColor="#00FFFF"
             iconType="add"
             goTo="/new"
+            goBack="/"
         />  
         </>
     )

@@ -82,6 +82,7 @@ export default function Main() {
             transitionColor="#00FFFF"
             iconType="add"
             goTo="/new"
+            goBack="/"
         />
         </>
     )

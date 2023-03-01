@@ -36,8 +36,6 @@ export default function Secrets() {
             setSecrets(wifis);
         }
     },[]);
-
-    console.log(secrets);
     
     return(
         <>
@@ -59,6 +57,7 @@ export default function Secrets() {
             transitionColor="#00FFFF"
             iconType="add"
             goTo="/new"
+            goBack="/"
         />  
         </>
     )

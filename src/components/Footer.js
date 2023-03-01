@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Footer({ message, color, transitionColor, iconType, goTo }) { 
+export default function Footer({ message, color, transitionColor, iconType, goTo, goBack }) { 
     const navigate = useNavigate(); 
 
     function changePage() { 
@@ -12,7 +12,7 @@ export default function Footer({ message, color, transitionColor, iconType, goTo
     return(
         <Container>
             <FooterContainer>
-                <Message message={message} onClick={() => navigate("/")}> 
+                <Message message={message} onClick={() => navigate(goBack)}> 
                     <ion-icon name="chevron-back-outline"></ion-icon>
                     <span>Back</span>
                 </Message>
