@@ -12,6 +12,11 @@ export default function CreateSecret() {
     const [ password, setPassword ] = useState(); 
     const [ username, setUsername ] = useState(); 
     const [ url, setUrl ] = useState();
+    const [ description, setDescription ] = useState(); 
+    const [ number, setNumber ] = useState();
+    const [ cvc, setCvc ] = useState();
+    const [ type, setType ] = useState();
+    const [ wifiName, setWifiName ] = useState();
 
     return( 
         <>
@@ -36,6 +41,30 @@ export default function CreateSecret() {
                         required
                     />
                 </Input>
+                {name=== "Safe Notes" ? (
+                <Input> 
+                    <textarea
+                        type="text"
+                        placeholder="Description"
+                        value={description}
+                        onChange={(event) => setDescription(event.target.value)}
+                        disabled={disabled}
+                        required
+                    />
+                </Input>
+                ): ("")}
+                {name=== "Wifi Passwords" ? (
+                <Input> 
+                    <input
+                        type="text"
+                        placeholder="Name"
+                        value={wifiName}
+                        onChange={(event) => setWifiName(event.target.value)}
+                        disabled={disabled}
+                        required
+                    />
+                </Input>
+                ): ("")}
                 {name=== "Credentials" || name=== "Wifi Passwords" ? (
                 <Input> 
                     <input
@@ -70,6 +99,45 @@ export default function CreateSecret() {
                         value={url}
                         onChange={(event) => setUrl(event.target.value)}
                         disabled={disabled}
+                        required
+                    />
+                </Input>
+                ) : ("")}
+                {name=== "Cards" ? (
+                <Input> 
+                    <input
+                        type="number"
+                        placeholder="Number"
+                        value={number}
+                        onChange={(event) => setNumber(event.target.value)}
+                        disabled={disabled}
+                        maxLength={16}
+                        required
+                    />
+                </Input>
+                ) : ("")}
+                {name=== "Cards" ? (
+                <Input> 
+                    <input
+                        type="number"
+                        placeholder="CVC"
+                        value={cvc}
+                        onChange={(event) => setCvc(event.target.value)}
+                        disabled={disabled}
+                        maxLength={3}
+                        required
+                    />
+                </Input>
+                ) : ("")}
+                {name=== "Cards" ? (
+                <Input> 
+                    <input
+                        type="text"
+                        placeholder="Type"
+                        value={type}
+                        onChange={(event) => setType(event.target.value)}
+                        disabled={disabled}
+                        maxLength={16}
                         required
                     />
                 </Input>
