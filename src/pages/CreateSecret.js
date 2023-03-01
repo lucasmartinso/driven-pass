@@ -18,6 +18,7 @@ export default function CreateSecret() {
     const [ cvc, setCvc ] = useState();
     const [ type, setType ] = useState();
     const [ wifiName, setWifiName ] = useState();
+    const [ modal, setModal ] = useState(false);
 
     function registreInfo() { 
         try {
@@ -29,6 +30,13 @@ export default function CreateSecret() {
 
     return( 
         <>
+        {modal ? (
+            <MessageAlert 
+                modal={modal} 
+                setModal={setModal}
+            />) : ("")
+        }
+
         <Title 
             word={name}
         />
@@ -158,12 +166,11 @@ export default function CreateSecret() {
                 color="rgba(155, 251, 176, 1)"
                 transitionColor="green"
                 iconType="checkmark"
-                goTo="/new"
+                goTo={modal}
                 goBack="/new"
+                setModal={setModal}
             />
         </form>
-
-        <MessageAlert />
         </>
     )
 }

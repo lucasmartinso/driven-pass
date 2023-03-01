@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
-export default function Footer({ message, color, transitionColor, iconType, goTo, goBack }) { 
+export default function Footer({ message, color, transitionColor, iconType, goTo, goBack, setModal }) { 
     const navigate = useNavigate(); 
 
     function changePage() { 
-        navigate(goTo);
-        window.location.reload();
+        if(!goTo) setModal(true);
+        else {
+            navigate(goTo);
+            window.location.reload();
+        }
     }
 
     return(

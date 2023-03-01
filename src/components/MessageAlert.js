@@ -1,21 +1,31 @@
 import styled from "styled-components";
 import { ThreeDots } from "react-loader-spinner";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export default function MessageAlert() {
+export default function MessageAlert({ modal, setModal }) {
     const alert = "Muito legal"; 
-    const message = "njcdnjdcnjcdnjdcjdnccdjncd";
+    const message = "njcdnjdcnjcdnjdcjdnccdjnccnjncdjncdjncdjncdjcnjdncjdcncdkcdkmckmcdndcnjcndjdnjncjncdjcdjcd";
     const [ clicked, setClicked ] = useState(false);
+    const navigate = useNavigate();
+
+    function confirm() { 
+        setClicked(true);
+        setModal(false);
+    }
 
     return(
         <>
-            <Shadow>
-                <Box>
-                    <p><strong>{alert}</strong></p>
-                    <p>{message}</p>
-                    <button><ThreeDots color="white" height={70} width={90} /></button>
-                </Box>
-            </Shadow>
+        <Shadow>
+            <Box>
+                <p><strong>{alert}</strong></p>
+                <p>{message}</p>
+                <button onClick={confirm}>
+                {clicked ? (
+                    <ThreeDots color="white" height={70} width={90} />) : ("OK")}
+                </button>
+            </Box>
+        </Shadow>
         </>
     )
 }
@@ -41,10 +51,15 @@ const Box = styled.div`
     align-items: center; 
     justify-content: center;
     flex-direction: column; 
+    font-family: Recursive;
+    z-index: 4;
 
     p { 
+        width: 60%;
         margin-bottom: 40px;
         font-size: 20px;
+        word-break: break-all;
+        text-align: center;
     }
 
     button { 
@@ -54,16 +69,18 @@ const Box = styled.div`
         font-weight: bold;
         border: none;
         border-radius: 12px;
-        transition: all 1s linear;
+        transition: all 0.5s linear;
         box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.25);
         display: flex; 
         align-items: center; 
         justify-content: center;
+        font-size: 18px;
 
         &:hover,
         &:focus { 
             cursor: pointer;
             background-color: #70CE36;
+            color: white;
         }
 
         &:active {  
