@@ -1,21 +1,25 @@
-function credentials({ title, password, username, url }) { 
+import { createCredentials } from "../services/credentialsService"
+
+async function credentials({ title, password, username, url }) { 
     const data = { 
         title, 
         password,
         username, 
         url
     }
+
+    await createCredentials(data);
 }
 
-function notes() { 
+async function notes() { 
 
 }
 
-function cards() { 
+async function cards() { 
 
 }
 
-function wifi() { 
+async function wifi() { 
 
 }
 

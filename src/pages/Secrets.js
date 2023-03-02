@@ -1,22 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Title from "../components/Title";
 import { getCredentials } from "../services/credentialsService";
 import { getNotes } from "../services/safenotesService";
 import { getCards } from "../services/cardsService";
 import { getWifi } from "../services/wifiService";
-import AuthConfig from "../hooks/auth";
+import TokenContext from "../contexts/tokenContext";
 import styled from "styled-components";
 import Footer from "../components/Footer";
 
 export default function Secrets() { 
+    const { token } = useContext(TokenContext);
     const { name } = useParams();
     const [ icon, setIcon ] = useState();
     const [ secrets, setSecrets ] = useState([]);
 
     useEffect(async () => { 
-        const config = AuthConfig();
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` },
+        };   
 
         if(name === "Credentials") {
             setIcon("enter");
