@@ -5,7 +5,6 @@ import Footer from "../components/Footer";
 import MessageAlert from "../components/MessageAlert";
 import { Input } from "../components/Sign";
 import Title from "../components/Title";
-import { createFunctions } from "../hooks/create";
 
 export default function CreateSecret() { 
     const { name } = useParams();
@@ -22,16 +21,7 @@ export default function CreateSecret() {
     const [ modal, setModal ] = useState(false);
 
     function registreInfo() { 
-        try {
-            setDisabled(true);
-
-            switch(name) { 
-                case "Credentials": createFunctions.credentials(title, password, username, url); break;
-                default: alert("BUGOU");
-            }
-        } catch (error) {
-            console.log(error);
-        }
+        
     }
 
     return( 
@@ -176,6 +166,7 @@ export default function CreateSecret() {
                 goBack="/new"
                 setModal={setModal}
                 createAction={name}
+                data={{title,password,username,url}}
             />
         </form>
         </>

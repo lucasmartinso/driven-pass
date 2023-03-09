@@ -1,11 +1,37 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { createCredentials } from "../services/credentialsService";
+import { useContext } from "react";
+import TokenContext from "../contexts/tokenContext";
 
-export default function Footer({ message, color, transitionColor, iconType, goTo, goBack, setModal }) { 
+export default function Footer({ message, color, transitionColor, iconType, goTo, goBack, setModal, createAction, data }) { 
     const navigate = useNavigate(); 
+    const { token } = useContext(TokenContext);
+    
+    const config = {
+        headers: { Authorization: `Bearer ${token}` },
+    };
 
-    function changePage() { 
-        if(!goTo) setModal(true);
+    async function changePage() { 
+        if(!goTo) { 
+            switch(createAction) { 
+                case "Credentials": 
+                    const credentialsData = { 
+                        title: data.title,
+                        password: data.password,
+                        username: data.username,
+                        url: data.url
+                    }
+                    try {
+                        await createCredentials(credentialsData,config);
+                    } catch (error) {
+                        console.log(error);
+                    }
+                    break;
+                default: alert("BUGOU");
+                }
+            setModal(true);
+        }
         else {
             navigate(goTo);
             window.location.reload();
