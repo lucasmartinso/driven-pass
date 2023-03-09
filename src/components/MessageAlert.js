@@ -3,21 +3,24 @@ import { ThreeDots } from "react-loader-spinner";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function MessageAlert({ modal, setModal }) {
-    const alert = "Muito legal"; 
-    const message = "njcdnjdcnjcdnjdcjdnccdjnccnjncdjncdjncdjncdjcnjdncjdcncdkcdkmckmcdndcnjcndjdnjncjncdjcdjcd";
+export default function MessageAlert({ modal, setModal, alert, message }) {
     const [ clicked, setClicked ] = useState(false);
     const navigate = useNavigate();
+    console.log(alert);
 
     function confirm() { 
         setClicked(true);
         setModal(false);
+        if(alert !== "Opssssss!!") { 
+            navigate("/");
+            window.location.reload();
+        }
     }
 
     return(
         <>
         <Shadow>
-            <Box>
+            <Box alert={alert}>
                 <p><strong>{alert}</strong></p>
                 <p>{message}</p>
                 <button onClick={confirm}>
@@ -65,7 +68,7 @@ const Box = styled.div`
     button { 
         width: 40%;
         height: 45px;
-        background-color: rgba(155, 251, 176, 1);
+        background-color: ${props => props.alert === "Opssssss!!" ? ("rgba(251, 155, 155, 1)") : ("rgba(155, 251, 176, 1)")};
         font-weight: bold;
         border: none;
         border-radius: 12px;
@@ -79,7 +82,7 @@ const Box = styled.div`
         &:hover,
         &:focus { 
             cursor: pointer;
-            background-color: #70CE36;
+            background-color: ${props => props.alert === "Opssssss!!" ? ("rgba(255,0,0,1)") : ("#70CE36")};
             color: white;
         }
 

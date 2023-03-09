@@ -19,6 +19,8 @@ export default function CreateSecret() {
     const [ type, setType ] = useState();
     const [ wifiName, setWifiName ] = useState();
     const [ modal, setModal ] = useState(false);
+    const [ message, setMessage ] = useState();
+    const [ alert, setAlert ] = useState();
 
     function registreInfo() { 
         
@@ -30,6 +32,8 @@ export default function CreateSecret() {
             <MessageAlert 
                 modal={modal} 
                 setModal={setModal}
+                message={message}
+                alert={alert}
             />) : ("")
         }
 
@@ -167,6 +171,8 @@ export default function CreateSecret() {
                 setModal={setModal}
                 createAction={name}
                 data={{title,password,username,url}}
+                setMessage={setMessage}
+                setAlert={setAlert}
             />
         </form>
         </>

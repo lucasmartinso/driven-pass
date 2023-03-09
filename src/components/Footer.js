@@ -4,8 +4,10 @@ import { createCredentials } from "../services/credentialsService";
 import { useContext } from "react";
 import TokenContext from "../contexts/tokenContext";
 
-export default function Footer({ message, color, transitionColor, iconType, goTo, goBack, setModal, createAction, data }) { 
+export default function Footer({ message, color, transitionColor, iconType, goTo, goBack, setModal, createAction, data, setMessage, setAlert }) { 
     const navigate = useNavigate(); 
+    const sucessAlert = "Well done!!";
+    const errorAlert = "Opssssss!!"
     const { token } = useContext(TokenContext);
     
     const config = {
@@ -24,8 +26,12 @@ export default function Footer({ message, color, transitionColor, iconType, goTo
                     }
                     try {
                         await createCredentials(credentialsData,config);
+                        setMessage(`${createAction} create with sucess!!`);
+                        setAlert(sucessAlert);
                     } catch (error) {
                         console.log(error);
+                        setMessage(error.response.data);
+                        setAlert(errorAlert);
                     }
                     break;
                 default: alert("BUGOU");
