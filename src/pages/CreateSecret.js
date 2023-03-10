@@ -22,15 +22,10 @@ export default function CreateSecret() {
     const [ message, setMessage ] = useState();
     const [ alert, setAlert ] = useState();
 
-    function registreInfo() { 
-        
-    }
-
     return( 
         <>
         {modal ? (
-            <MessageAlert 
-                modal={modal} 
+            <MessageAlert  
                 setModal={setModal}
                 message={message}
                 alert={alert}
@@ -45,7 +40,7 @@ export default function CreateSecret() {
             <span>Register</span>
         </SubTitle>
 
-        <form onSubmit={registreInfo}>
+        <form>
             <Inputs>
                 <Input> 
                     <input
@@ -95,7 +90,7 @@ export default function CreateSecret() {
                     />
                 </Input>
                 ): ("")}
-                {name=== "Credentials" || name=== "Safe Notes" ? (
+                {name=== "Credentials" ? (
                 <Input> 
                     <input
                         type="text"
@@ -108,7 +103,7 @@ export default function CreateSecret() {
                     />
                 </Input>
                 ) : ("")}
-                {name=== "Credentials" || name=== "Safe Notes" ? (
+                {name=== "Credentials" ? (
                 <Input> 
                     <input
                         type="url"
@@ -170,7 +165,7 @@ export default function CreateSecret() {
                 goBack="/new"
                 setModal={setModal}
                 createAction={name}
-                data={{title,password,username,url}}
+                data={{title,password,username,url,description,number,cvc,type}}
                 setMessage={setMessage}
                 setAlert={setAlert}
             />

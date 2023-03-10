@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { createCredentials } from "../services/credentialsService";
 import { useContext } from "react";
 import TokenContext from "../contexts/tokenContext";
+import { createNotes } from "../services/safenotesService";
 
 export default function Footer({ message, color, transitionColor, iconType, goTo, goBack, setModal, createAction, data, setMessage, setAlert }) { 
     const navigate = useNavigate(); 
@@ -26,6 +27,36 @@ export default function Footer({ message, color, transitionColor, iconType, goTo
                     }
                     try {
                         await createCredentials(credentialsData,config);
+                        setMessage(`${createAction} create with sucess!!`);
+                        setAlert(sucessAlert);
+                    } catch (error) {
+                        console.log(error);
+                        setMessage(error.response.data);
+                        setAlert(errorAlert);
+                    }
+                    break;
+                case "Safe Notes": 
+                    const notesData = { 
+                        title: data.title,
+                        description: data.description
+                    }
+                    try {
+                        await createNotes(notesData,config);
+                        setMessage(`${createAction} create with sucess!!`);
+                        setAlert(sucessAlert);
+                    } catch (error) {
+                        console.log(error);
+                        setMessage(error.response.data);
+                        setAlert(errorAlert);
+                    }
+                    break;
+                case "Cards": 
+                    const cardsData = { 
+                        title: data.title,
+                        description: data.description
+                    }
+                    try {
+                        await createNotes(cardsData,config);
                         setMessage(`${createAction} create with sucess!!`);
                         setAlert(sucessAlert);
                     } catch (error) {

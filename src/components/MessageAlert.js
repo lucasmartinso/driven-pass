@@ -3,7 +3,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function MessageAlert({ modal, setModal, alert, message }) {
+export default function MessageAlert({ setModal, alert, message }) {
     const [ clicked, setClicked ] = useState(false);
     const navigate = useNavigate();
     console.log(alert);
