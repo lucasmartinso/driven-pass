@@ -60,7 +60,8 @@ export default function Footer({ message, color, transitionColor, iconType, goTo
                         password: data.password,
                         cvc: data.cvc, 
                         type: data.type,
-                        expirateDate: data.expirateDate
+                        expirateDate: data.expirateDate,
+                        isVirtual: false
                     }
                     try {
                         await createCards(cardsData,config);

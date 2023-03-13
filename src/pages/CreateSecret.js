@@ -179,7 +179,7 @@ export default function CreateSecret() {
                 goBack="/new"
                 setModal={setModal}
                 createAction={name}
-                data={{title,password,username,url,description,number,cvc,type,names}}
+                data={{title,password,username,url,description,number,cvc,type,names,expirateDate}}
                 setMessage={setMessage}
                 setAlert={setAlert}
             />
