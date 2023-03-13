@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import Title from "../components/Title";
 import { searchCredential } from "../services/credentialsService";
 import TokenContext from "../contexts/tokenContext";
+import { searchNotes } from "../services/safenotesService";
 
 export default function SelectSecret() { 
     const { name, id } = useParams(); 
@@ -19,7 +20,7 @@ export default function SelectSecret() {
             let secret; 
             try {
                 if(name === "Credentials") secret = await searchCredential(id,config);
-                // else if(name === "Safe Notes") secret = await 
+                else if(name === "Safe Notes") secret = await searchNotes(id,config);
                 // else if(name === "Cards") secret = await 
                 // else if if(name === "Wifi Passwords") secret = await 
             } catch (error) {

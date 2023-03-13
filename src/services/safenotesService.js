@@ -9,3 +9,9 @@ export async function getNotes(config) {
 export async function createNotes(data,config) { 
     await api.post(`/notes`, data,config);
 }
+
+export async function searchNotes(id,config) { 
+    const promise = await api.get(`/notes/${id}`,config);
+
+    return promise.data;
+}
