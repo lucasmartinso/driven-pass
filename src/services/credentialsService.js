@@ -9,3 +9,7 @@ export async function getCredentials(config) {
 export async function createCredentials(data,config) { 
     await api.post(`/credentials`, data,config);
 }
+
+export async function searchCredential(id,config) { 
+    await api.get(`/credentials/${id}`,config);
+}
