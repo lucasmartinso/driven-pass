@@ -8,6 +8,7 @@ import TokenContext from "./contexts/tokenContext";
 import Secrets from "./pages/Secrets";
 import Categories from "./pages/Categories";
 import CreateSecret from "./pages/CreateSecret";
+import SelectSecret from "./pages/SelectSecret";
 
 export default function App() {
   const [ token, setToken ] = useState(localStorage.getItem("USER_TOKEN"));
@@ -23,6 +24,7 @@ export default function App() {
           <Route path="/new" element={<Categories />}/>
           <Route path="/new/create/:name" element={<CreateSecret />}/>
           <Route path="/secret/:name" element={<Secrets />}/>
+          <Route path="/secret/:name/:id" element={<SelectSecret />}/>
         </Routes>
       </BrowserRouter>
     </TokenContext.Provider>

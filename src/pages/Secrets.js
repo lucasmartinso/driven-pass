@@ -38,8 +38,8 @@ export default function Secrets() {
             setSecrets(cards);
         } else if(name === "Wifi Passwords") { 
             setIcon("wifi");
-            const {wifis} = await getWifi(config);
-            setSecrets(wifis);
+            const {wifi} = await getWifi(config);
+            setSecrets(wifi);
         }
     },[]);
 
@@ -60,6 +60,7 @@ export default function Secrets() {
                                 id= {secret.id}
                                 icon={icon}
                                 name={secret.title}
+                                screen={name}
                             />
                         ))}
                     </ul>

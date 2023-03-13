@@ -11,6 +11,9 @@ export default function SecretsType({ id, name, icon, length, screen }) {
         } else if(screen==="create") { 
             navigate(`/new/create/${name}`);
             window.location.reload();
+        } else { 
+            navigate(`/secret/${screen}/${id}`);
+            window.location.reload();
         }
     }
 
