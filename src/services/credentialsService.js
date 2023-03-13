@@ -11,5 +11,7 @@ export async function createCredentials(data,config) {
 }
 
 export async function searchCredential(id,config) { 
-    await api.get(`/credentials/${id}`,config);
+    const promise = await api.get(`/credentials/${id}`,config);
+
+    return promise.data;
 }

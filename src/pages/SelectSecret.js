@@ -16,10 +16,23 @@ export default function SelectSecret() {
         };
 
         async function searchSecret() { 
-            const secret = await searchCredential(id,config);
+            let secret; 
+            try {
+                if(name === "Credentials") secret = await searchCredential(id,config);
+                // else if(name === "Safe Notes") secret = await 
+                // else if(name === "Cards") secret = await 
+                // else if if(name === "Wifi Passwords") secret = await 
+            } catch (error) {
+                console.log(error);
+            }
+            
             setSecret(secret);
         } 
-    })
+
+        searchSecret();
+    }, []);
+
+    console.log(secret);
 
     return(
         <>
