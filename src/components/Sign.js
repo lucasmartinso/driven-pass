@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { ThreeDots } from "react-loader-spinner";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import { signup } from "../services/usersService";
+import { login, signup } from "../services/usersService";
 import padlock from "../styles/images/Padlocks.svg";
 import Login from "./Login";
 import Signup from "./Signup";
@@ -11,6 +12,7 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
     const [ error, setError ] = useState(false);
     const [ errorMessage, setErrorMessage ] = useState();
     const [ disabled, setDisabled ] = useState(false);
+    const navigate = useNavigate();
 
     async function signFunctions(event) { 
         event.preventDefault();
@@ -23,14 +25,24 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
             
             setClicked(true);
             setDisabled(true);
-            if(state === "signup") await signup(userData);
-            else if(state === "login") console.log("oi");
+            if(state === "signup") { 
+                await signup(userData);
+                navigate("/login");
+            }
+            else if(state === "login") { 
+                const { data } = await login(userData);
+                console.log(data);
+                localStorage.setItem("USER_TOKEN",data.token);
+                navigate("/");
+                window.location.reload();
+            }
 
         } catch (error) {
             console.log(error);
             setErrorMessage(error.response.data);
             setError(true);
             setClicked(false);
+            setDisabled(false);
         }
     }
 
@@ -69,7 +81,7 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
                         <button>
                             { clicked ? (
                               <ThreeDots color="white" height={80} width={100} />
-                            ) : ("Create")}
+                            ) : ( state=== "signup" ? ("Create") : ("Acess")) }
                         </button>
                     </Buttons>
                     

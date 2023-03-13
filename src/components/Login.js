@@ -7,7 +7,7 @@ export default function Login() {
     return(
         <>
         <Line>.</Line>
-        <Message onClick={() => navigate("/sign-up")}>Primeiro acesso? Crie sua conta!</Message>
+        <Message onClick={() => navigate("/")}>Primeiro acesso? Crie sua conta!</Message>
         </>
     )
 }

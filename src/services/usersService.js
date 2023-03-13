@@ -5,5 +5,7 @@ export async function signup(userData) {
 }
 
 export async function login(userData) { 
-    await api.post(`/users/sign-in`,userData);
+    const promise = await api.post(`/users/sign-in`,userData);
+    
+    return promise;
 }
