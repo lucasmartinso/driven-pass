@@ -77,7 +77,7 @@ export default function CreateSecret() {
                     />
                 </Input>
                 ): ("")}
-                {name=== "Credentials" || name=== "Wifi Passwords" ? (
+                {name!== "Safe Notes" ? (
                 <Input> 
                     <input
                         type="password"
@@ -165,7 +165,7 @@ export default function CreateSecret() {
                 goBack="/new"
                 setModal={setModal}
                 createAction={name}
-                data={{title,password,username,url,description,number,cvc,type}}
+                data={{title,password,username,url,description,number,cvc,type,name}}
                 setMessage={setMessage}
                 setAlert={setAlert}
             />

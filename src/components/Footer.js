@@ -4,6 +4,8 @@ import { createCredentials } from "../services/credentialsService";
 import { useContext } from "react";
 import TokenContext from "../contexts/tokenContext";
 import { createNotes } from "../services/safenotesService";
+import { createCards } from "../services/cardsService";
+import { createWifi } from "../services/wifiService";
 
 export default function Footer({ message, color, transitionColor, iconType, goTo, goBack, setModal, createAction, data, setMessage, setAlert }) { 
     const navigate = useNavigate(); 
@@ -53,10 +55,29 @@ export default function Footer({ message, color, transitionColor, iconType, goTo
                 case "Cards": 
                     const cardsData = { 
                         title: data.title,
-                        description: data.description
+                        number: data.number,
+                        password: data.password,
+                        cvc: data.cvc, 
+                        type: data.type
                     }
                     try {
-                        await createNotes(cardsData,config);
+                        await createCards(cardsData,config);
+                        setMessage(`${createAction} create with sucess!!`);
+                        setAlert(sucessAlert);
+                    } catch (error) {
+                        console.log(error);
+                        setMessage(error.response.data);
+                        setAlert(errorAlert);
+                    }
+                    break;
+                case "Wifi Passwords": 
+                    const wifiData = { 
+                        title: data.title,
+                        name: data.name, 
+                        password: data.password
+                    }
+                    try {
+                        await createWifi(wifiData,config);
                         setMessage(`${createAction} create with sucess!!`);
                         setAlert(sucessAlert);
                     } catch (error) {
