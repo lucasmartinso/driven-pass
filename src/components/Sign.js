@@ -3,6 +3,7 @@ import { ThreeDots } from "react-loader-spinner";
 import styled from "styled-components";
 import { signup } from "../services/usersService";
 import padlock from "../styles/images/Padlocks.svg";
+import Login from "./Login";
 import Signup from "./Signup";
 
 export default function Padlock({ email, setEmail, password, setPassword, state }) { 
@@ -71,8 +72,10 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
                             ) : ("Create")}
                         </button>
                     </Buttons>
-
-                    <Signup />
+                    
+                    {state==="signup" ? (
+                        <Signup />
+                    ) : ("")}
 
                     {error ? (
                     <Error>
@@ -84,6 +87,11 @@ export default function Padlock({ email, setEmail, password, setPassword, state 
                     ) : ""}
                 </Inputs>
             </form>
+
+            {state==="login" ? (
+                <Login />
+            ) : ("")}
+
         </Container>
     )
 }

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Padlock from "../components/Sign";
 
-export default function Signup() { 
+export default function Login() { 
     const [ email, setEmail ] = useState();
     const [ password, setPassword ] = useState(); 
 
@@ -13,9 +13,8 @@ export default function Signup() {
             setEmail={setEmail}
             password={password}
             setPassword={setPassword}
-            state="signup"
+            state="login"
         />
         </>
     )
 }
-
