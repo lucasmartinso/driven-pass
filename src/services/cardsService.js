@@ -5,3 +5,7 @@ export async function getCards(config) {
 
     return promise.data
 }
+
+export async function createCards(data,config) { 
+    await api.post(`/cards`, data,config);
+}

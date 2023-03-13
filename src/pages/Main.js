@@ -9,24 +9,35 @@ import { getCredentials } from "../services/credentialsService";
 import { getNotes } from "../services/safenotesService";
 import { getCards } from "../services/cardsService";
 import { getWifi } from "../services/wifiService";
-import AuthConfig from "../hooks/auth";
+import TokenContext from "../contexts/tokenContext";
 
 export default function Main() { 
+    const { token } = useContext(TokenContext);
     const [ credentials, setCredentials ] = useState([]); 
     const [ notes, setNotes ] = useState([]);
     const [ cards, setCards ] = useState([]);
     const [ wifi, setWifi ] = useState([]);
     
-    useEffect(async () => {
-        const config = AuthConfig();
-        const { credentials } = await getCredentials(config);
-        setCredentials(credentials);
-        const { notes } = await getNotes(config);
-        setNotes(notes);
-        const { cards } = await getCards(config);
-        setCards(cards);
-        const { wifi } = await getWifi(config);
-        setWifi(wifi);
+    useEffect(() => {
+        async function getData() {
+            try {
+                const config = {
+                    headers: { Authorization: `Bearer ${token}` },
+                };            
+                const { credentials } = await getCredentials(config);
+                setCredentials(credentials);
+                const { notes } = await getNotes(config);
+                setNotes(notes);
+                const { cards } = await getCards(config);
+                setCards(cards);
+                const { wifi } = await getWifi(config);
+                setWifi(wifi);
+            } catch (error) {
+                console.log(error);
+            } 
+        }
+            
+        getData();
     },[]);
 
     const typeSecrets = [ 
@@ -55,6 +66,8 @@ export default function Main() {
             length: wifi
         },
     ]
+
+    console.log(typeSecrets);
     
     return(
         <>
@@ -70,6 +83,7 @@ export default function Main() {
                         name= {secret.name}
                         icon= {secret.icon}
                         length = {secret.length}
+                        screen="acess"
                     />
                 ))}
             </ul>
@@ -81,12 +95,13 @@ export default function Main() {
             transitionColor="#00FFFF"
             iconType="add"
             goTo="/new"
+            goBack="/"
         />
         </>
     )
 }
 
-const Types = styled.div`
+export const Types = styled.div`
     width: 100%; 
     height: 80%; 
     margin-top: 30px;

@@ -5,3 +5,7 @@ export async function getWifi(config) {
 
     return promise.data;
 }
+
+export async function createWifi(data,config) { 
+    await api.post(`/wifi`, data,config);
+}

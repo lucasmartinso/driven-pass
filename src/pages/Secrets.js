@@ -1,21 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Title from "../components/Title";
 import { getCredentials } from "../services/credentialsService";
 import { getNotes } from "../services/safenotesService";
 import { getCards } from "../services/cardsService";
 import { getWifi } from "../services/wifiService";
-import AuthConfig from "../hooks/auth";
+import TokenContext from "../contexts/tokenContext";
 import styled from "styled-components";
+import Footer from "../components/Footer";
 
 export default function Secrets() { 
+    const { token } = useContext(TokenContext);
     const { name } = useParams();
     const [ icon, setIcon ] = useState();
     const [ secrets, setSecrets ] = useState([]);
 
     useEffect(async () => { 
-        const config = AuthConfig();
+
+        const config = {
+            headers: { Authorization: `Bearer ${token}` },
+        };   
 
         if(name === "Credentials") {
             setIcon("enter");
@@ -35,8 +40,6 @@ export default function Secrets() {
             setSecrets(wifis);
         }
     },[]);
-
-    console.log(secrets);
     
     return(
         <>
@@ -46,8 +49,20 @@ export default function Secrets() {
 
         {secrets.length !==0 ? 
             ("OIII") : (
-                <Message>No {name} registered yet</Message>
+                <Message>
+                    <p><ion-icon name="alert-circle-sharp"></ion-icon> NO {name.toUpperCase()} REGISTRED YET</p>
+                    <span>Click on the right bottom button to create a new {name}</span>
+                </Message>
             )}
+
+        <Footer 
+            message={false}
+            color="rgba(0, 89, 133, 1)"
+            transitionColor="#00FFFF"
+            iconType="add"
+            goTo="/new"
+            goBack="/"
+        />  
         </>
     )
 }
@@ -58,8 +73,25 @@ const Message = styled.div`
     display: flex; 
     justify-content: center; 
     align-items: center;
-    margin-top: 350px;
-    font-size: 30px;
-    color: rgba(0, 89, 133, 1);
-    font-weight: bold;
+    flex-direction: column;
+    margin-top: 320px;
+    
+    p { 
+        font-size: 30px;
+        color: rgba(0, 89, 133, 1);
+        font-weight: bold;
+        display: flex; 
+        align-items: center;
+
+        ion-icon { 
+            width: 50px; 
+            height: 50px;
+            color: red;
+            margin-right: 10px;
+        }
+    }
+
+    span { 
+        margin-top: 10px;
+    }
 `
