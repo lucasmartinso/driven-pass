@@ -56,9 +56,11 @@ export default function Footer({ message, color, transitionColor, iconType, goTo
                     const cardsData = { 
                         title: data.title,
                         number: data.number,
+                        name: data.names,
                         password: data.password,
                         cvc: data.cvc, 
-                        type: data.type
+                        type: data.type,
+                        expirateDate: data.expirateDate
                     }
                     try {
                         await createCards(cardsData,config);

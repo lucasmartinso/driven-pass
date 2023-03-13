@@ -17,10 +17,11 @@ export default function CreateSecret() {
     const [ number, setNumber ] = useState();
     const [ cvc, setCvc ] = useState();
     const [ type, setType ] = useState();
-    const [ wifiName, setWifiName ] = useState();
+    const [ names, setNames ] = useState();
     const [ modal, setModal ] = useState(false);
     const [ message, setMessage ] = useState();
     const [ alert, setAlert ] = useState();
+    const [ expirateDate, setExpirateDate ] = useState();
 
     return( 
         <>
@@ -65,13 +66,13 @@ export default function CreateSecret() {
                     />
                 </Input>
                 ): ("")}
-                {name=== "Wifi Passwords" ? (
+                {name=== "Wifi Passwords" || name=== "Cards" ? (
                 <Input> 
                     <input
                         type="text"
                         placeholder="Name"
-                        value={wifiName}
-                        onChange={(event) => setWifiName(event.target.value)}
+                        value={names}
+                        onChange={(event) => setNames(event.target.value)}
                         disabled={disabled}
                         required
                     />
@@ -154,6 +155,19 @@ export default function CreateSecret() {
                     />
                 </Input>
                 ) : ("")}
+                {name=== "Cards" ? (
+                <Input> 
+                    <input
+                        type="month"
+                        placeholder="Expirate Date"
+                        value={expirateDate}
+                        onChange={(event) => setExpirateDate(event.target.value)}
+                        disabled={disabled}
+                        maxLength={16}
+                        required
+                    />
+                </Input>
+                ) : ("")}
             </Inputs>
 
             <Footer 
@@ -165,7 +179,7 @@ export default function CreateSecret() {
                 goBack="/new"
                 setModal={setModal}
                 createAction={name}
-                data={{title,password,username,url,description,number,cvc,type,name}}
+                data={{title,password,username,url,description,number,cvc,type,names}}
                 setMessage={setMessage}
                 setAlert={setAlert}
             />
