@@ -110,5 +110,7 @@ export const Types = styled.div`
 
     ul { 
         width: 90%;
+        height: 600px;
+        overflow-y: scroll;
     }
 `

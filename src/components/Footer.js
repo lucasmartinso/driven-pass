@@ -94,7 +94,7 @@ export default function Footer({ message, color, transitionColor, iconType, goTo
             setModal(true);
         }
         else {
-            navigate(goTo);
+            navigate(`${goTo}`);
             window.location.reload();
         }
     }

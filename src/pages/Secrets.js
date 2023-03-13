@@ -9,6 +9,8 @@ import { getWifi } from "../services/wifiService";
 import TokenContext from "../contexts/tokenContext";
 import styled from "styled-components";
 import Footer from "../components/Footer";
+import SecretsType from "../renderpages/SecretsType";
+import { Types } from "./Main";
 
 export default function Secrets() { 
     const { token } = useContext(TokenContext);
@@ -24,22 +26,24 @@ export default function Secrets() {
 
         if(name === "Credentials") {
             setIcon("enter");
-            const credentials = await getCredentials(config);
+            const {credentials} = await getCredentials(config);
             setSecrets(credentials);
         } else if(name === "Safe Notes") { 
             setIcon("pencil-sharp");
-            const notes = await getNotes(config);
+            const {notes} = await getNotes(config);
             setSecrets(notes);
         } else if(name === "Cards") { 
             setIcon("card");
-            const cards = await getCards(config);
+            const {cards} = await getCards(config);
             setSecrets(cards);
         } else if(name === "Wifi Passwords") { 
             setIcon("wifi");
-            const wifis = await getWifi(config);
+            const {wifis} = await getWifi(config);
             setSecrets(wifis);
         }
     },[]);
+
+    console.log(secrets);
     
     return(
         <>
@@ -48,7 +52,19 @@ export default function Secrets() {
         />
 
         {secrets.length !==0 ? 
-            ("OIII") : (
+            (
+                <Types>
+                    <ul>
+                        {secrets.map(secret => ( 
+                            <SecretsType 
+                                id= {secret.id}
+                                icon={icon}
+                                name={secret.title}
+                            />
+                        ))}
+                    </ul>
+                </Types>  ) : (
+
                 <Message>
                     <p><ion-icon name="alert-circle-sharp"></ion-icon> NO {name.toUpperCase()} REGISTRED YET</p>
                     <span>Click on the right bottom button to create a new {name}</span>
@@ -56,7 +72,7 @@ export default function Secrets() {
             )}
 
         <Footer 
-            message={false}
+            message={true}
             color="rgba(0, 89, 133, 1)"
             transitionColor="#00FFFF"
             iconType="add"
